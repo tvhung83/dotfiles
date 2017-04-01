@@ -5,10 +5,13 @@
         protocol = https
 [alias]
         co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
+        # promote = !$ZSH/bin/git-promote
+        # wtf     = !$ZSH/bin/git-wtf
+        # rank-contributors = !$ZSH/bin/git-rank-contributors
         count   = !git shortlog -sn
+        br = branch
+        ci = commit
+        st = status
 [color]
         diff = auto
         status = auto
@@ -19,10 +22,20 @@
         editor = vim
 [apply]
         whitespace = nowarn
+[mergetool "Kaleidoscope"]
+        cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+        trustexitcode = true
 [mergetool]
         keepBackup = false
+        prompt = false
+[merge]
+        tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+        cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
         prompt = false
+[diff]
+        tool = Kaleidoscope
 [help]
         autocorrect = 1
 [push]
