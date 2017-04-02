@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
+tap 'caskroom/versions'
 #tap 'puma/puma'
 
 brew 'ack' # grep for programmers
@@ -34,6 +35,8 @@ brew 'hub'
 brew 'nvm'
 brew 'mysql'
 brew 'postgresql'
+brew 'tmux'
+brew 'reattach-to-user-namespace'
 
 # cask '1password'
 # cask 'adium' # Adium is a free instant messaging application
@@ -52,6 +55,7 @@ brew 'postgresql'
 # cask 'download-shuttle' # seems 404
 # cask 'dont-sleep' # seems 404
 # cask 'spacemacs' # seems 404
+cask 'java7'
 cask 'iterm2'
 cask 'sublime-text'
 cask 'visual-studio-code'
