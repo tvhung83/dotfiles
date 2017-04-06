@@ -1,0 +1,242 @@
+" Don't try to be vi compatible
+set nocompatible
+
+" Helps force plugins to load correctly when it is turned back on below
+filetype off
+
+" Turn on syntax highlighting
+syntax on
+
+" For plugins to load correctly
+filetype plugin indent on
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+"Plug 'pangloss/vim-javascript'
+Plug 'altercation/vim-colors-solarized'
+"Plug 'leafgarland/typescript-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ervandew/supertab'
+"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Shougo/neomru.vim'
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+"Plug 'Quramy/tsuquyomi'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-session'
+Plug 'jlanzarotta/bufexplorer'
+"Plug 'Shougo/unite.vim'
+
+" Add plugins to &runtimepath
+call plug#end()
+
+" TODO: Pick a leader key
+let mapleader = ";"
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
+
+" Security
+set modelines=0
+
+" Show line numbers
+set number
+
+" Show file stats
+set ruler
+
+" Blink cursor on error instead of beeping (grr)
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Whitespace
+"set wrap
+"set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+" Cursor motion
+set scrolloff=3
+set backspace=indent,eol,start
+set matchpairs+=<:> " use % to jump between pairs
+runtime! macros/matchit.vim
+set autoindent
+set smartindent
+
+" Jump between panes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" How to open new split
+set splitbelow
+set splitright
+
+" Move up/down editor lines
+nnoremap j gj
+nnoremap k gk
+
+" re-map Escape
+inoremap jk <Esc>
+
+" Allow hidden buffers
+set hidden
+
+" Rendering
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Last line
+set showmode
+set showcmd
+
+" Searching
+"nnoremap / /\v
+"vnoremap / /\v
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+map <leader><space> :let @/=''<cr> " clear search
+
+" Remap help key.
+inoremap <F1> <ESC>:set invfullscreen<CR>a
+nnoremap <F1> :set invfullscreen<CR>
+vnoremap <F1> :set invfullscreen<CR>
+
+" Textmate holdouts
+
+" Formatting
+map <leader>q gqip
+map <C-n> :NERDTreeToggle<CR>
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap <F10> :b <C-Z>
+
+" Visualize tabs and newlines
+set listchars=tab:▸\ ,eol:¬
+" Uncomment this to enable by default:
+"set list " To enable by default
+" Or use your leader key + l to toggle on/off
+map <leader>l :set list!<CR> " Toggle tabs and EOL
+
+" Color scheme (terminal)
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+colorscheme solarized
+
+" Paste mode
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
+" vim-airline
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+"let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_powerline_fonts = 1
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Unite
+"nnoremap <C-p> :Unite file_rec/async<cr>
+"nnoremap <space>s :Unite -quick-match buffer<cr>
+"nnoremap <space>/ :Unite grep:.<cr>
+"let g:unite_source_history_yank_enable = 1
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
+  "" Play nice with supertab
+  "let b:SuperTabDisabled=1
+  "" Enable navigation with control-j and control-k in insert mode
+  "imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  "imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"endfunction
+
+
+" TypeScript
+"if !exists("g:ycm_semantic_triggers")
+  "let g:ycm_semantic_triggers = {}
+"endif
+"let g:ycm_semantic_triggers['typescript'] = ['.']
+" display tooltip
+"set ballooneval
+"autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+
+" Auto-complete HTML
+":set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" Enable copying to clipboard using `CTRL + c`
+"map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+
+"function! MakeSession()
+  "let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  "if (filewritable(b:sessiondir) != 2)
+    "exe 'silent !mkdir -p ' b:sessiondir
+    "redraw!
+  "endif
+  "let b:filename = b:sessiondir . '/session.vim'
+  "exe "mksession! " . b:filename
+"endfunction
+
+"function! LoadSession()
+  "let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  "let b:sessionfile = b:sessiondir . "/session.vim"
+  "if (filereadable(b:sessionfile))
+    "exe 'source ' b:sessionfile
+  "else
+    "echo "No session loaded."
+  "endif
+"endfunction
+"au VimEnter * nested :call LoadSession()
+"au VimLeave * :call MakeSession()
+
+" The Silver Searcher
+ "if executable('ag')
+     " Use ag over grep
+     "set grepprg=ag\ --nogroup\ --nocolor
+
+     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+     "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    "let g:ctrlp_use_caching = 0
+"endif
+
+" bind K to grep word under cursor
+"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+"command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+"nnoremap \ :Ag<SPACE>
+
