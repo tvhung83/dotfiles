@@ -84,12 +84,14 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Other examples:
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'dweidner/tmux-theme'
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
 #set -g @plugin 'odedlaz/tmux-onedark-theme'
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
 
 #set -g @colors-solarized 'dark'
 set -g @theme "solarized"
@@ -104,7 +106,8 @@ set-option -g status-left-length 60
 set-option -g status-right-length 90
 set-option -g status-left "#(~/.tmux-powerline/powerline.sh left)"
 set-option -g status-right "#(~/.tmux-powerline/powerline.sh right)"
-set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]⮀#[fg=colour255, bg=colour27] #I ⮁ #W #[fg=colour27, bg=colour235]⮀"
+#set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]⮀#[fg=colour255, bg=colour27] #I ⮁ #W #[fg=colour27, bg=colour235]⮀"
+set-window-option -g window-status-current-format " #I ⮁ #W "
 #bind C-[ run '~/path/to/tmux-powerline/mute_powerline.sh left'        # Mute left statusbar.
 #bind C-] run '~/path/to/tmux-powerline/mute_powerline.sh right'       # Mute right statusbar.
 
@@ -135,6 +138,14 @@ set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]�
 # pane number display
 #set-option -g display-panes-active-colour colour33 #blue
 #set-option -g display-panes-colour colour166 #orange
+
+# tmux-resurrect restore bash history
+set -g @resurrect-save-bash-history 'on'
+
+# tmux-continuum
+set -g @continuum-restore 'on'
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'iterm,fullscreen'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

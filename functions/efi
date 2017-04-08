@@ -4,7 +4,7 @@
 
 sudo mkdir /Volumes/EFI
 if [ ! -z "$1" ]; then
-  sudo mount -t msdos /dev/disk$1s1 /Volumes/EFI
+  sudo mount -t msdos /dev/$1s1 /Volumes/EFI
 else
   sudo mount -t msdos /dev/disk0s1 /Volumes/EFI
 fi
