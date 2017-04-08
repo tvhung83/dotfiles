@@ -140,7 +140,7 @@ set-window-option -g window-status-current-format " #I ⮁ #W "
 #set-option -g display-panes-colour colour166 #orange
 
 # tmux-resurrect restore bash history
-set -g @resurrect-save-bash-history 'on'
+#set -g @resurrect-save-bash-history 'on'
 
 # tmux-continuum
 set -g @continuum-restore 'on'
