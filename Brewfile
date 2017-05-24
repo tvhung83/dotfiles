@@ -5,6 +5,7 @@ tap 'caskroom/versions'
 #tap 'puma/puma'
 
 brew 'ack' # grep for programmers
+brew 'vim'
 brew 'coreutils'
 # brew 'go' # Golang
 brew 'grc' # Colourize logs
@@ -16,10 +17,9 @@ brew 'grc' # Colourize logs
 # brew 'openssl'
 brew 'node'
 brew 'readline' # Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in
-brew 'postgresql'
 # brew 'puma/puma/puma-dev'
-brew 'ruby-build'
-brew 'rbenv'
+# brew 'ruby-build'
+# brew 'rbenv'
 # brew 'roundup' # Spray roundup on your shells to eliminate weeds and bugs. If your shells survive roundup's deathly toxic properties, they are considered roundup-ready.
 # brew 'spaceman-diff' # diff images from the command line
 # brew 'spark' # sparklines for your shell (draw bars with input numbers)
@@ -31,10 +31,10 @@ brew 'yarn'
 # tvhung83 packages
 brew 'autoconf'
 brew 'automake'
-brew 'hub'
-brew 'nvm'
-brew 'mysql'
-brew 'postgresql'
+# brew 'hub'
+# brew 'nvm'
+# brew 'mysql'
+# brew 'postgresql'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 
@@ -60,23 +60,22 @@ cask 'iterm2'
 cask 'sublime-text'
 cask 'visual-studio-code'
 cask 'postman'
-cask 'sequel-pro'
-cask 'postico'
-cask 'shuttle' # SSH connection management
+# cask 'sequel-pro'
+# cask 'postico'
+# cask 'shuttle' # SSH connection management
 # cask 'kaleidoscope'
-cask 'docker'
+# cask 'docker'
 cask 'launchbar'
-cask 'slack'
-cask 'zoomus'
+# cask 'slack'
+# cask 'zoomus'
 cask 'google-chrome'
 cask 'gyazo'
-cask 'microsoft-office'
 cask 'skype'
 cask 'the-unarchiver'
 # cask 'progressive-downloader'
 cask 'skitch'
 # cask 'transmit'
-cask 'appcleaner'
+# cask 'appcleaner'
 cask 'vlc'
 cask 'intellij-idea-ce'
 cask 'microsoft-office'

@@ -106,16 +106,16 @@ alias gac='git add -A && git commit -m'
 
 # rbenv
 # init according to man page
-if (( $+commands[rbenv] ))
-then
-  eval "$(rbenv init -)"
-fi
-export PATH="$PATH:$HOME/.rbenv/shims"
-export JRUBY_OPTS=--dev
+# if (( $+commands[rbenv] ))
+# then
+#   eval "$(rbenv init -)"
+# fi
+# export PATH="$PATH:$HOME/.rbenv/shims"
+# export JRUBY_OPTS=--dev
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR="$HOME/.nvm"
+#source $(brew --prefix nvm)/nvm.sh
 
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
