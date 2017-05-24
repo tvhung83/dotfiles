@@ -1,0 +1,30 @@
+{
+	"always_show_minimap_viewport": true,
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/Materialize/schemes/Material Solarized Dark.tmTheme",
+	"font_face": "Roboto Mono for Powerline",
+	"font_size": 14,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"material_theme_accent_indigo": true,
+	"material_theme_compact_panel": true,
+	"material_theme_compact_sidebar": true,
+	"material_theme_contrast_mode": true,
+	"material_theme_small_statusbar": true,
+	"material_theme_small_tab": true,
+	"material_theme_tabs_autowidth": true,
+	"material_theme_tree_headings": true,
+	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
+	"show_full_path": true,
+	"theme": "Material Solarized Dark.sublime-theme"
+}
