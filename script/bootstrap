@@ -131,7 +131,7 @@ clone_mandatory_repos () {
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
   git clone git://github.com/zsh-users/zsh-autosuggestions $HOME/.zsh/zsh-autosuggestions
   git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
-  git clone https://github.com/erikw/tmux-powerline.git $HOME/.tmux-powerline
+  git clone https://github.com/tvhung83/tmux-powerline.git $HOME/.tmux-powerline
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
