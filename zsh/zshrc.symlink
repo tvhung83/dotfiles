@@ -118,7 +118,7 @@ alias gac='git add -A && git commit -m'
 #source $(brew --prefix nvm)/nvm.sh
 
 # Java
-export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Yarn
 # if (( $+commands[yarn] ))
