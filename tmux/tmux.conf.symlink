@@ -19,11 +19,11 @@ setw -g mode-keys vi
 
 # Setup 'v' to begin selection as in Vim
 bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+#bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 
 # Update default binding of `Enter` to also use copy-pipe
 unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+#bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
 ## STUFF FROM BEST .TMUX.CONF ##
 setw -g monitor-activity on
@@ -86,7 +86,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @plugin 'seebi/tmux-colors-solarized'
 set -g @plugin 'dweidner/tmux-theme'
-set -g @plugin 'thewtex/tmux-mem-cpu-load'
+#set -g @plugin 'thewtex/tmux-mem-cpu-load'
 #set -g @plugin 'odedlaz/tmux-onedark-theme'
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-yank'
@@ -98,16 +98,18 @@ set -g @theme-background "dark"
 
 # tmux-powerline
 set-option -g status on
-set-option -g status-interval 5
+set-option -g status-interval 2
 #set-option -g status-utf8 on
 set-option -g status-justify "left"
 set-option -g status-left-length 60
 set-option -g status-right-length 90
 set-option -g status-left "#(~/.tmux-powerline/powerline.sh left)"
 set-option -g status-right "#(~/.tmux-powerline/powerline.sh right)"
-set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]⮀#[fg=colour255, bg=colour27] #I ⮁ #W #[fg=colour27, bg=colour235]⮀"
+#set-window-option -g window-status-current-format "#[fg=colour235, bg=colour27]  #[fg=colour255, bg=colour27] #I  #W #[fg=colour27, bg=colour235]  "
+#set-window-option -g window-status-current-format "#[fg=colour234,bg=colour31]#[fg=colour117,bg=colour31]#I  #[fg=colour231,bold]#W #[fg=colour31, bg=colour234,nobold]"
+set-window-option -g window-status-current-format "#[fg=colour235,bg=colour31] #[fg=colour117,bg=colour31]#I  #[fg=colour231,bold]#W #[fg=colour31,bg=colour235,nobold]"
 #set-window-option -g window-status-current-format " #I ⮁ #W "
-set-window-option -g window-status-format "#I ⮁ #W"
+set-window-option -g window-status-format " #I  #W "
 #bind C-[ run '~/path/to/tmux-powerline/mute_powerline.sh left'        # Mute left statusbar.
 #bind C-] run '~/path/to/tmux-powerline/mute_powerline.sh right'       # Mute right statusbar.
 
@@ -145,7 +147,7 @@ set-window-option -g window-status-format "#I ⮁ #W"
 # tmux-continuum
 set -g @continuum-restore 'on'
 set -g @continuum-boot 'on'
-set -g @continuum-boot-options 'iterm,fullscreen'
+#set -g @continuum-boot-options 'iterm,fullscreen'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

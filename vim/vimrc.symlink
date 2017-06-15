@@ -124,7 +124,7 @@ map <leader>q gqip
 map <C-n> :NERDTreeToggle<CR>
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
-nnoremap <F10> :b <C-Z>
+"nnoremap <F10> :b <C-Z>
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
