@@ -55,7 +55,7 @@ brew 'reattach-to-user-namespace'
 # cask 'download-shuttle' # seems 404
 # cask 'dont-sleep' # seems 404
 # cask 'spacemacs' # seems 404
-cask 'java7'
+cask 'java'
 cask 'iterm2'
 cask 'sublime-text'
 cask 'visual-studio-code'
@@ -72,7 +72,7 @@ cask 'google-chrome'
 cask 'gyazo'
 cask 'skype'
 cask 'the-unarchiver'
-# cask 'progressive-downloader'
+cask 'smcfancontrol'
 cask 'skitch'
 # cask 'transmit'
 # cask 'appcleaner'
