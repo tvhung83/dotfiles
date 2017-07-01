@@ -78,6 +78,9 @@ export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
 alias reload!='. ~/.zshrc'
 alias vv='$EDITOR $HOME/.vimrc'
 alias vz='$EDITOR $HOME/.zshrc'
+alias sz='source $HOME/.zshrc'
+alias dl='diskutil list'
+alias um='diskutil unmount'
 
 # git
 # Use `hub` as our git wrapper:

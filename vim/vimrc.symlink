@@ -158,6 +158,10 @@ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linen
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+" Transparent vertical split
+highlight VertSplit ctermbg=NONE
+highlight VertSplit ctermfg=NONE
+
 " Unite
 "nnoremap <C-p> :Unite file_rec/async<cr>
 "nnoremap <space>s :Unite -quick-match buffer<cr>
