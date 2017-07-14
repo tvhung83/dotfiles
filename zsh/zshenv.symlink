@@ -1,0 +1,35 @@
+
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/.dotfiles
+
+# your project folder that we can `c [tab]` to
+export PROJECTS=~/workspace
+export PLAYGROUND=~/playground
+
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
+[ -f ~/.localrc ] && source ~/.localrc
+
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export CLICOLOR=true
+
+# System
+export PATH="./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:/usr/local/opt/qt@5.5/bin:$HOME/.embulk/bin:$PATH"
+export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+export EDITOR='nvim'
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=25"
+export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
+#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+
+# JRuby
+export JRUBY_OPTS=--dev
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
+
+export GEM_HOME=$HOME/workspace/data-connector-assets/vendor/bundle_no_cache_ci/api/

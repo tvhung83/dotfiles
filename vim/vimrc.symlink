@@ -20,7 +20,7 @@ Plug 'altercation/vim-colors-solarized'
 "Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "Plug 'Shougo/neomru.vim'
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
@@ -29,6 +29,11 @@ Plug 'ervandew/supertab'
 "Plug 'xolox/vim-session'
 Plug 'jlanzarotta/bufexplorer'
 "Plug 'Shougo/unite.vim'
+"Plug 'vim-ruby/vim-ruby'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'mileszs/ack.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -103,8 +108,8 @@ set showmode
 set showcmd
 
 " Searching
-"nnoremap / /\v
-"vnoremap / /\v
+nnoremap / /\v
+vnoremap / /\v
 set hlsearch
 set incsearch
 set ignorecase
@@ -161,6 +166,58 @@ let g:ctrlp_cmd = 'CtrlP'
 " Transparent vertical split
 highlight VertSplit ctermbg=NONE
 highlight VertSplit ctermfg=NONE
+
+" fzf.vim
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" fzf.vim
+set rtp+=/usr/local/opt/fzf
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '14%'})
+
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " Unite
 "nnoremap <C-p> :Unite file_rec/async<cr>
@@ -225,22 +282,22 @@ highlight VertSplit ctermfg=NONE
 "au VimLeave * :call MakeSession()
 
 " The Silver Searcher
- "if executable('ag')
-     " Use ag over grep
-     "set grepprg=ag\ --nogroup\ --nocolor
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ackprg = 'ag --vimgrep'
 
-     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-     "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-    " ag is fast enough that CtrlP doesn't need to cache
-    "let g:ctrlp_use_caching = 0
-"endif
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " bind K to grep word under cursor
-"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
-"nnoremap \ :Ag<SPACE>
+nnoremap \ :Ag<SPACE>
 

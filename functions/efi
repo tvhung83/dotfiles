@@ -1,3 +1,0 @@
-#!/bin/zsh
-# Mount EFI partition
-diskutil mount /dev/disk${1:=0}s1

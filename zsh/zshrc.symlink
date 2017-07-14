@@ -7,24 +7,6 @@ if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
   source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
 fi
 
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
-
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/workspace
-export PLAYGROUND=~/playground
-
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
-
 fpath=($ZSH/functions $fpath)
 
 autoload -U $ZSH/functions/*(:t)
@@ -44,11 +26,6 @@ setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share 
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
 
-# System
-export PATH="./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-export EDITOR='vim'
-
 # GRC colorizes nifty unix tools all over the place
 # It's conflicting with ZSH Auto Suggestion and make keyboard slow
 # if (( $+commands[grc] )) && (( $+commands[brew] ))
@@ -61,8 +38,6 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 # My customizations
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=25"
-export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 # Aliases
 # grc overides for ls
@@ -76,11 +51,18 @@ export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
 #   alias la='gls -A --color'
 # fi
 alias reload!='. ~/.zshrc'
-alias vv='$EDITOR $HOME/.vimrc'
-alias vz='$EDITOR $HOME/.zshrc'
+alias vi=$EDITOR
+alias ev='$EDITOR $HOME/.vimrc'
+alias et='$EDITOR $HOME/.tmux.conf'
+alias ez='$EDITOR $HOME/.zshrc'
 alias sz='source $HOME/.zshrc'
 alias dl='diskutil list'
 alias um='diskutil unmount'
+alias efi='diskutil mount /dev/disk0s1'
+alias efi1='diskutil mount /dev/disk1s1'
+alias efi2='diskutil mount /dev/disk2s1'
+alias ff='find . -type f -name'
+alias fd='find . -type d -name'
 
 # git
 # Use `hub` as our git wrapper:
@@ -109,19 +91,15 @@ alias gac='git add -A && git commit -m'
 
 # rbenv
 # init according to man page
-# if (( $+commands[rbenv] ))
-# then
-#   eval "$(rbenv init -)"
-# fi
-# export PATH="$PATH:$HOME/.rbenv/shims"
-# export JRUBY_OPTS=--dev
+#if (( $+commands[rbenv] ))
+#then
+  #eval "$(rbenv init -)"
+#fi
+alias rei='eval "$(rbenv init -)"'
 
 # nvm
-# export NVM_DIR="$HOME/.nvm"
 #source $(brew --prefix nvm)/nvm.sh
-
-# Java
-export JAVA_HOME=$(/usr/libexec/java_home)
+alias nvi='source $(brew --prefix nvm)/nvm.sh'
 
 # Yarn
 # if (( $+commands[yarn] ))
@@ -132,3 +110,17 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 # Docker
 # alias d='docker $*'
 # alias d-c='docker-compose $*'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf customizations
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+# Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# .zssh
+zssh_ids=(id_rsa)
