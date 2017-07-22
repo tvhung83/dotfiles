@@ -1187,7 +1187,7 @@ run '~/.tmux/plugins/tpm/tpm'
 # _cpuload() {
 #   case $(uname -s) in
 #     *Darwin*)
-#       tmux set -g @cpuload "$(tmux-mem-cpu-load --interval 2)"
+#       tmux set -g @cpuload "$(tmux-mem-cpu-load --interval 2 --averages-count 1)"
 #       ;;
 #   esac
 # }

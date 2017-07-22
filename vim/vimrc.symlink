@@ -4,6 +4,8 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
+set termguicolors
+
 " Turn on syntax highlighting
 syntax enable
 syntax on
@@ -17,7 +19,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'pangloss/vim-javascript'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'kristijanhusak/vim-hybrid-material'
 "Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -39,7 +42,6 @@ Plug 'mileszs/ack.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
-" TODO: Pick a leader key
 let mapleader = ";"
 map gn :bn<cr>
 map gp :bp<cr>
@@ -142,9 +144,11 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " Color scheme (terminal)
 set t_Co=256
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+let g:enable_bold_font = 1
+"colorscheme solarized8_dark
+colorscheme hybrid_material
 
 " Paste mode
 nnoremap <F2> :set invpaste paste?<CR>
@@ -157,8 +161,11 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 "let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
-let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+"let g:airline_powerline_fonts = 1
+"let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+
+" Hybrid theme
+let g:airline_theme = "hybrid"
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'

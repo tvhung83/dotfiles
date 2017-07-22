@@ -28,16 +28,12 @@ setopt HIST_REDUCE_BLANKS
 
 # GRC colorizes nifty unix tools all over the place
 # It's conflicting with ZSH Auto Suggestion and make keyboard slow
-# if (( $+commands[grc] )) && (( $+commands[brew] ))
-# then
-#   source `brew --prefix`/etc/grc.bashrc
-# fi
+if (( $+commands[grc] )) && (( $+commands[brew] ))
+then
+  source `brew --prefix`/etc/grc.bashrc
+fi
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
-
-# My customizations
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=25"
 
 # Aliases
 # grc overides for ls
@@ -87,7 +83,7 @@ alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 # alias gcb='git copy-branch-name'
 # alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
-alias gac='git add -A && git commit -m'
+#alias gac='git add -A && git commit -m'
 
 # rbenv
 # init according to man page
@@ -121,6 +117,3 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# .zssh
-zssh_ids=(id_rsa)

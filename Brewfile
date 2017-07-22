@@ -3,6 +3,7 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 tap 'caskroom/versions'
 #tap 'puma/puma'
+tap 'd12frosted/emacs-plus'
 
 brew 'ack' # grep for programmers
 brew 'vim'
@@ -55,8 +56,6 @@ brew 'emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --
 # cask 'tunnelbear' # TunnelBear VPN
 
 # tvhung83 apps
-# cask 'vpn-unlimited' # seems 404
-# cask 'download-shuttle' # seems 404
 cask 'java'
 cask 'iterm2'
 cask 'sublime-text'
