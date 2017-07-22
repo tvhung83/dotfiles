@@ -1,4 +1,4 @@
-
+#export CLICOLOR=1
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -31,5 +31,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
-
-export GEM_HOME=$HOME/workspace/data-connector-assets/vendor/bundle_no_cache_ci/api/
