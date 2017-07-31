@@ -24,10 +24,10 @@ export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 # JRuby
-export JRUBY_OPTS=--dev
+export JRUBY_OPTS="--debug --dev"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 
 # Java
-#export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
+export JAVA_HOME=$(/usr/libexec/java_home -v1.7)

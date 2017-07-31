@@ -1,0 +1,59 @@
+# default word color
+regexp=.+
+colours=white
+-
+
+# table borders
+regexp=[+\-]+[+\-]|[|]
+colours=green
+-
+
+# NULLs
+regexp=\bNULL\b
+colours=on_blue
+-
+
+# data in ( ) and ' '
+regexp=\([\w\d,']+\)
+colours=blue
+-
+
+# numeric
+regexp=\s[\d\.]+(\s|.$)
+colours=yellow
+-
+
+# date or time
+regexp=(\d{4}-\d{2}-\d{2}|\d{2}:\d{2}:\d{2})
+colours=cyan
+-
+
+# hashes
+regexp=\b\*?[0-9A-F]{6,}\b
+colours=black on_yellow
+-
+
+# IP v4 address
+regexp=(\d{1,3}\.){3}\d{1,3}(:\d{1,5})?
+colours=cyan
+-
+
+# schema
+regexp=`\w+`
+colours=yellow
+-
+
+# email
+regexp=[\w\.\-_]+@[\w\.\-_]+
+colours=magenta
+-
+
+# row delimeter when using \G key
+regexp=[*]+.+[*]+
+count=stop
+colours=white
+-
+
+# column names when using \G key
+regexp=^\s*\w+:
+colours=white

@@ -46,7 +46,7 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 #   alias ll="gls -l --color"
 #   alias la='gls -A --color'
 # fi
-alias reload!='. ~/.zshrc'
+alias reload!='. $HOME/.zshrc $HOME/.zshenv'
 alias vi=$EDITOR
 alias ev='$EDITOR $HOME/.vimrc'
 alias et='$EDITOR $HOME/.tmux.conf'
@@ -59,6 +59,8 @@ alias efi1='diskutil mount /dev/disk1s1'
 alias efi2='diskutil mount /dev/disk2s1'
 alias ff='find . -type f -name'
 alias fd='find . -type d -name'
+alias j2y='pbpaste | json2yaml | pbcopy'
+alias mysql='mysql --pager="grcat ~/.mysql.grc | less -RSFX" "$@"'
 
 # git
 # Use `hub` as our git wrapper:

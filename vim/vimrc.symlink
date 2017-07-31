@@ -16,24 +16,25 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-obsession'
+"Plug 'dhruvasagar/vim-prosession'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'pangloss/vim-javascript'
-"Plug 'altercation/vim-colors-solarized'
 Plug 'kristijanhusak/vim-hybrid-material'
 "Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "Plug 'Shougo/neomru.vim'
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 "Plug 'Quramy/tsuquyomi'
 "Plug 'xolox/vim-misc'
 "Plug 'xolox/vim-session'
-Plug 'jlanzarotta/bufexplorer'
+"Plug 'jlanzarotta/bufexplorer'
 "Plug 'Shougo/unite.vim'
-"Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
@@ -61,6 +62,11 @@ set visualbell
 
 " Encoding
 set encoding=utf-8
+
+" Set the working directory to wherever the open file lives
+"set autochdir
+
+set autoread
 
 " Whitespace
 "set wrap
@@ -95,7 +101,7 @@ nnoremap j gj
 nnoremap k gk
 
 " re-map Escape
-inoremap jk <Esc>
+"inoremap jk <Esc>
 
 " Allow hidden buffers
 set hidden
@@ -121,9 +127,9 @@ set showmatch
 map <leader><space> :let @/=''<cr> " clear search
 
 " Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
+"inoremap <F1> <ESC>:set invfullscreen<CR>a
+"nnoremap <F1> :set invfullscreen<CR>
+"vnoremap <F1> :set invfullscreen<CR>
 
 " Textmate holdouts
 
@@ -131,8 +137,8 @@ vnoremap <F1> :set invfullscreen<CR>
 map <leader>q gqip
 map <C-n> :NERDTreeToggle<CR>
 set wildchar=<Tab> wildmenu wildmode=full
-set wildcharm=<C-Z>
-nnoremap <F10> :b <C-Z>
+set wildcharm=<C-z>
+nnoremap <Leader>b :b <C-z><S-Tab>
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
@@ -169,7 +175,8 @@ let g:airline_theme = "hybrid"
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPMixed'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.csv     " MacOSX/Linux
 
 " Transparent vertical split
 highlight VertSplit ctermbg=NONE
@@ -191,7 +198,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 set rtp+=/usr/local/opt/fzf
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
+"let g:fzf_layout = { 'window': '-tabnew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -289,11 +296,16 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 "au VimEnter * nested :call LoadSession()
 "au VimLeave * :call MakeSession()
 
+if isdirectory('.git') && executable('git')
+  set grepprg=git\ grep\ -nI
+endif
+
 " The Silver Searcher
-if executable('ag')
+if executable('ag') && !isdirectory('.git')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ackprg = 'ag --vimgrep'
+  set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor
+  set grepformat=%f:%l:%c%m
+  let g:ackprg='ag --vimgrep'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -309,3 +321,13 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
+" Prosession
+"let g:prosession_on_startup = 1
+"let g:prosession_default_session = 1
+
+" `gf` opens file under cursor in a new vertical split
+nnoremap gf :vertical wincmd f<CR>
+
+nnoremap <Leader>p :e **/*
+"nnoremap <Leader>v :vsplit **/*
+"nnoremap <Leader>s :split **/*

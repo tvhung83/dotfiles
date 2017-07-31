@@ -4,6 +4,8 @@ tap 'homebrew/bundle'
 tap 'caskroom/versions'
 #tap 'puma/puma'
 tap 'd12frosted/emacs-plus'
+tap 'neovim/neovim'
+tap 'rogual/neovim-dot-app'
 
 brew 'ack' # grep for programmers
 brew 'vim'
@@ -41,7 +43,11 @@ brew 'reattach-to-user-namespace'
 brew 'tree'
 brew 'the_silver_searcher'
 #brew 'fasd' # already integrated to zim module
-brew 'emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon'
+#brew 'emacs-plus'
+brew 'heroku'
+brew 'htop'
+brew 'neofetch'
+brew 'neovim-dot-app'
 
 # cask '1password'
 # cask 'adium' # Adium is a free instant messaging application
@@ -54,6 +60,19 @@ brew 'emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --
 # cask 'steam'
 # cask 'transmission'
 # cask 'tunnelbear' # TunnelBear VPN
+
+# QuickLook extensions
+cask 'qlcolorcode'
+cask 'qlstephen'
+cask 'qlmarkdown'
+cask 'quicklook-json'
+cask 'qlprettypatch'
+cask 'quicklook-csv'
+cask 'betterzipql'
+cask 'qlimagesize'
+cask 'webpquicklook'
+cask 'suspicious-package'
+cask 'qlvideo'
 
 # tvhung83 apps
 cask 'java'

@@ -6,3 +6,9 @@ Library/
 Movies/
 Music/
 Pictures/
+.vscode/
+**/*.#*
+**/*GPATH
+**/*GRTAGS
+**/*GTAGS
+.idea/
