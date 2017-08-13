@@ -16,24 +16,13 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-obsession'
-"Plug 'dhruvasagar/vim-prosession'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'pangloss/vim-javascript'
 Plug 'kristijanhusak/vim-hybrid-material'
-"Plug 'leafgarland/typescript-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
-"Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'Shougo/neomru.vim'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-"Plug 'Quramy/tsuquyomi'
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
 "Plug 'jlanzarotta/bufexplorer'
-"Plug 'Shougo/unite.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -124,14 +113,13 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
+" clear search
+map <leader><space> :let @/=''<cr>
 
 " Remap help key.
 "inoremap <F1> <ESC>:set invfullscreen<CR>a
 "nnoremap <F1> :set invfullscreen<CR>
 "vnoremap <F1> :set invfullscreen<CR>
-
-" Textmate holdouts
 
 " Formatting
 map <leader>q gqip
@@ -142,18 +130,13 @@ nnoremap <Leader>b :b <C-z><S-Tab>
 
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-"set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+" set list
+map <leader>l :set list!<CR>
 
 " Color scheme (terminal)
 set t_Co=256
 set background=dark
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
 let g:enable_bold_font = 1
-"colorscheme solarized8_dark
 colorscheme hybrid_material
 
 " Paste mode
@@ -167,8 +150,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 "let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline_powerline_fonts = 1
-"let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline_powerline_fonts = 1
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
 " Hybrid theme
 let g:airline_theme = "hybrid"
@@ -176,11 +159,7 @@ let g:airline_theme = "hybrid"
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.csv     " MacOSX/Linux
-
-" Transparent vertical split
-highlight VertSplit ctermbg=NONE
-highlight VertSplit ctermfg=NONE
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.csv
 
 " fzf.vim
 " Mapping selecting mappings
@@ -195,10 +174,10 @@ imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " fzf.vim
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 " In Neovim, you can set up fzf window using a Vim command
 let g:fzf_layout = { 'window': 'enew' }
-"let g:fzf_layout = { 'window': '-tabnew' }
+" let g:fzf_layout = { 'window': '-tabnew' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -234,67 +213,8 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-" Unite
-"nnoremap <C-p> :Unite file_rec/async<cr>
-"nnoremap <space>s :Unite -quick-match buffer<cr>
-"nnoremap <space>/ :Unite grep:.<cr>
-"let g:unite_source_history_yank_enable = 1
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-"nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-"nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-"nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-"nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-"autocmd FileType unite call s:unite_settings()
-"function! s:unite_settings()
-  "" Play nice with supertab
-  "let b:SuperTabDisabled=1
-  "" Enable navigation with control-j and control-k in insert mode
-  "imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  "imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-"endfunction
-
-
-" TypeScript
-"if !exists("g:ycm_semantic_triggers")
-  "let g:ycm_semantic_triggers = {}
-"endif
-"let g:ycm_semantic_triggers['typescript'] = ['.']
-" display tooltip
-"set ballooneval
-"autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
-
-" Auto-complete HTML
-":set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-
 " Enable copying to clipboard using `CTRL + c`
-"map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
-
-"function! MakeSession()
-  "let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-  "if (filewritable(b:sessiondir) != 2)
-    "exe 'silent !mkdir -p ' b:sessiondir
-    "redraw!
-  "endif
-  "let b:filename = b:sessiondir . '/session.vim'
-  "exe "mksession! " . b:filename
-"endfunction
-
-"function! LoadSession()
-  "let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-  "let b:sessionfile = b:sessiondir . "/session.vim"
-  "if (filereadable(b:sessionfile))
-    "exe 'source ' b:sessionfile
-  "else
-    "echo "No session loaded."
-  "endif
-"endfunction
-"au VimEnter * nested :call LoadSession()
-"au VimLeave * :call MakeSession()
+map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
 
 if isdirectory('.git') && executable('git')
   set grepprg=git\ grep\ -nI
@@ -321,13 +241,8 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
-" Prosession
-"let g:prosession_on_startup = 1
-"let g:prosession_default_session = 1
-
 " `gf` opens file under cursor in a new vertical split
 nnoremap gf :vertical wincmd f<CR>
 
-nnoremap <Leader>p :e **/*
-"nnoremap <Leader>v :vsplit **/*
-"nnoremap <Leader>s :split **/*
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
