@@ -30,7 +30,7 @@ setopt HIST_REDUCE_BLANKS
 # It's conflicting with ZSH Auto Suggestion and make keyboard slow
 if (( $+commands[grc] )) && (( $+commands[brew] ))
 then
-  source `brew --prefix`/etc/grc.bashrc
+  source `brew --prefix`/etc/grc.zsh
 fi
 # Pipe my public key to my clipboard.
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
@@ -39,13 +39,13 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 # grc overides for ls
 #   Made possible through contributions from generous benefactors like
 #   `brew install coreutils`
-# if $(gls &>/dev/null)
-# then
-#   alias ls="gls -F --color"
-#   alias l="gls -lAh --color"
-#   alias ll="gls -l --color"
-#   alias la='gls -A --color'
-# fi
+if $(gls &>/dev/null)
+then
+  alias ls="gls -F --color"
+  alias l="gls -lAh --color"
+  alias ll="gls -l --color"
+  alias la='gls -A --color'
+fi
 alias reload!='. $HOME/.zshrc $HOME/.zshenv'
 alias vi=$EDITOR
 alias ev='$EDITOR $HOME/.vimrc'
@@ -61,6 +61,7 @@ alias ff='find . -type f -name'
 alias fd='find . -type d -name'
 alias j2y='pbpaste | json2yaml | pbcopy'
 alias mysql='mysql --pager="grcat ~/.mysql.grc | less -RSFX" "$@"'
+alias em='emacsclient'
 
 # git
 # Use `hub` as our git wrapper:
@@ -96,8 +97,10 @@ fi
 #alias rbi='eval "$(rbenv init -)"'
 
 # nvm
-source $(brew --prefix nvm)/nvm.sh
-#alias nvi='source $(brew --prefix nvm)/nvm.sh'
+export NVM_DIR="$HOME/.nvm"
+alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Yarn
 # if (( $+commands[yarn] ))

@@ -31,3 +31,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
+
+# GPG signing
+export GPG_TTY=$(tty)
