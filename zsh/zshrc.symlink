@@ -10,6 +10,8 @@ fi
 fpath=($ZSH/functions $fpath)
 
 autoload -U $ZSH/functions/*(:t)
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -25,6 +27,7 @@ setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
+bindkey -v
 
 # GRC colorizes nifty unix tools all over the place
 # It's conflicting with ZSH Auto Suggestion and make keyboard slow
@@ -60,8 +63,13 @@ alias efi2='diskutil mount /dev/disk2s1'
 alias ff='find . -type f -name'
 alias fd='find . -type d -name'
 alias j2y='pbpaste | json2yaml | pbcopy'
+alias y2j='pbpaste | yaml2json | pbcopy'
 alias mysql='mysql --pager="grcat ~/.mysql.grc | less -RSFX" "$@"'
 alias em='emacsclient'
+alias bi='bundle install'
+alias br='bundle exec rails s'
+alias biem='bundle install --gemfile embulk-gemfile'
+alias py='python'
 
 # git
 # Use `hub` as our git wrapper:
@@ -94,7 +102,10 @@ if (( $+commands[rbenv] ))
 then
   eval "$(rbenv init -)"
 fi
-#alias rbi='eval "$(rbenv init -)"'
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -113,12 +124,25 @@ alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
 # alias d-c='docker-compose $*'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zim/modules/icd/init.zsh ] && source ~/.zim/modules/icd/init.zsh
+[ -f ~/.zim/modules/fzf-marks/init.zsh ] && source ~/.zim/modules/fzf-marks/init.zsh
 
 # fzf customizations
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
-# Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/robert/playground/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc'; fi

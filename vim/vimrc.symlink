@@ -18,7 +18,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
@@ -28,6 +29,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -58,7 +60,7 @@ set encoding=utf-8
 set autoread
 
 " Whitespace
-"set wrap
+set nowrap
 "set textwidth=79
 set formatoptions=tcqrn1
 set tabstop=2
@@ -115,6 +117,7 @@ set smartcase
 set showmatch
 " clear search
 map <leader><space> :let @/=''<cr>
+map <C-a> <esc>ggVG<CR>
 
 " Remap help key.
 "inoremap <F1> <ESC>:set invfullscreen<CR>a
@@ -137,7 +140,14 @@ map <leader>l :set list!<CR>
 set t_Co=256
 set background=dark
 let g:enable_bold_font = 1
-colorscheme hybrid_material
+
+" Hybrid theme
+" colorscheme hybrid_material
+" let g:airline_theme = "hybrid"
+
+" OneHalf theme
+colorscheme onehalfdark
+let g:airline_theme = 'onehalfdark'
 
 " Paste mode
 nnoremap <F2> :set invpaste paste?<CR>
@@ -150,11 +160,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 "let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-
-" Hybrid theme
-let g:airline_theme = "hybrid"
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -166,6 +173,10 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.csv
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
+nnoremap <leader>p :History<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>t :Files<CR>
 
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -216,21 +227,33 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 " Enable copying to clipboard using `CTRL + c`
 map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
 
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
 if isdirectory('.git') && executable('git')
   set grepprg=git\ grep\ -nI
 endif
 
-" The Silver Searcher
-if executable('ag') && !isdirectory('.git')
+" ripgrep
+if executable('rg') && !isdirectory('.git')
   " Use ag over grep
-  set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor
+  set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c%m
-  let g:ackprg='ag --vimgrep'
+  let g:ackprg='rg --vimgrep'
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+  " rg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 

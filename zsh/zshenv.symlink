@@ -14,23 +14,62 @@ export PLAYGROUND=~/playground
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
+# Flutter
+export FLUTTER_ROOT=$PLAYGROUND/flutter
+
+# Golang
+export GOPATH=~/workspace/go
+
 # System
-export PATH="./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:/usr/local/opt/qt@5.5/bin:$HOME/.embulk/bin:$PATH"
+export PATH="./bin:$HOME/.embulk/bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$GOPATH/bin:/usr/local/opt/mysql@5.7/bin:$HOME/playground/flutter/bin:/usr/local/opt/qt@5.5/bin:/usr/local/opt/qt/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export EDITOR='nvim'
+export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=25"
-export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=24"
+# export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 # JRuby
 export JRUBY_OPTS="--debug --dev"
+export JAVA_OPTS=-Xmx2g
+
+# rbenv
+# export RBENV_VERSION="2.6.0"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 
 # Java
-export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
+# export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
+export JAVA_HOME=$(/usr/libexec/java_home)
+export RAILS_ENV="development"
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+# Android SDK
+export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 # GPG signing
 export GPG_TTY=$(tty)
+
+alias urldecode='python -c "import sys, urllib as ul; \
+    print ul.unquote_plus(sys.argv[1])"'
+
+alias urlencode='python -c "import sys, urllib as ul; \
+    print ul.quote_plus(sys.argv[1])"'
+
+alias gh="open https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)"
+alias byte="gnumfmt --to=iec-i --suffix=B --padding=7"
+alias h='function hdi(){ howdoi $* -c -n 3; }; hdi'
+
+genpass() {
+  pwgen -Bs $1 1 | pbcopy | pbpaste; echo "Has been copied to clipboard"
+}
+
+swap()         
+{
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
+}
