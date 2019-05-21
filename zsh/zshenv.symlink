@@ -21,7 +21,7 @@ export FLUTTER_ROOT=$PLAYGROUND/flutter
 export GOPATH=~/workspace/go
 
 # System
-export PATH="./bin:$HOME/.embulk/bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$GOPATH/bin:/usr/local/opt/mysql@5.7/bin:$HOME/playground/flutter/bin:/usr/local/opt/qt@5.5/bin:/usr/local/opt/qt/bin:$PATH"
+export PATH="./bin:$HOME/.embulk/bin:$HOME/workspace/datatank-tools/bin:$HOME/workspace/chef-repo/scripts:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$GOPATH/bin:/usr/local/opt/mysql@5.7/bin:$HOME/playground/flutter/bin:/usr/local/opt/qt@5.5/bin:/usr/local/opt/qt/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export EDITOR='nvim'
 export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
@@ -37,7 +37,7 @@ export JRUBY_OPTS="--debug --dev"
 export JAVA_OPTS=-Xmx2g
 
 # rbenv
-# export RBENV_VERSION="2.6.0"
+# export RBENV_VERSION="2.6.2"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -63,6 +63,7 @@ alias urlencode='python -c "import sys, urllib as ul; \
 alias gh="open https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)"
 alias byte="gnumfmt --to=iec-i --suffix=B --padding=7"
 alias h='function hdi(){ howdoi $* -c -n 3; }; hdi'
+alias ops='datatank-ops'
 
 genpass() {
   pwgen -Bs $1 1 | pbcopy | pbpaste; echo "Has been copied to clipboard"
