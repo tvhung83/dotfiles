@@ -15,7 +15,7 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
 # Flutter
-export FLUTTER_ROOT=$PLAYGROUND/flutter
+# export FLUTTER_ROOT=$PLAYGROUND/flutter
 
 # Golang
 export GOPATH=~/workspace/go
@@ -33,23 +33,23 @@ export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 #PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 # JRuby
-export JRUBY_OPTS="--debug --dev"
-export JAVA_OPTS=-Xmx2g
+# export JRUBY_OPTS="--debug --dev"
+# export JAVA_OPTS=-Xmx2g
 
 # rbenv
 # export RBENV_VERSION="2.6.2"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 
 # Java
 # export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
-export JAVA_HOME=$(/usr/libexec/java_home)
-export RAILS_ENV="development"
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export RAILS_ENV="development"
+# export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 # Android SDK
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+# export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
 
 # GPG signing
 export GPG_TTY=$(tty)

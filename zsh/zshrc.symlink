@@ -98,18 +98,18 @@ alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 
 # rbenv
 # init according to man page
-if (( $+commands[rbenv] ))
-then
-  eval "$(rbenv init -)"
-fi
+# if (( $+commands[rbenv] ))
+# then
+#   eval "$(rbenv init -)"
+# fi
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
+# export NVM_DIR="$HOME/.nvm"
+# alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -142,7 +142,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/robert/playground/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/robert/playground/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc'; fi

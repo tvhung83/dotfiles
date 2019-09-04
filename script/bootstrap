@@ -127,15 +127,15 @@ link_file () {
 
 clone_mandatory_repos () {
   info 'git cloning mandatory repoes'
-  mkdir -p $HOME/.zsh $HOME/.tmux/plugins
-  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+  # mkdir -p $HOME/.zsh $HOME/.tmux/plugins
+  # git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
   git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
   git clone https://github.com/tvhung83/fzf-marks $HOME/.zim/modules/fzf-marks
   git clone https://github.com/tvhung83/zsh-interactive-cd.git $HOME/.zim/modules/icd
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   # nvm install
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+  # curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 }
 
 install_dotfiles () {
@@ -150,9 +150,9 @@ install_dotfiles () {
   done
 }
 
-setup_gitconfig
-clone_mandatory_repos
-install_dotfiles
+# setup_gitconfig
+# clone_mandatory_repos
+# install_dotfiles
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
