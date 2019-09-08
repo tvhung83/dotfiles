@@ -20,7 +20,7 @@ brew 'jq' # sed for JSON
 # brew 'libgit2' # libgit2 is a portable, pure C implementation of the Git core methods 
 brew 'openssl'
 # brew 'node'
-brew 'readline' # Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in
+# brew 'readline' # Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in
 # brew 'puma/puma/puma-dev'
 # brew 'ruby-build'
 # brew 'rbenv'
@@ -28,11 +28,11 @@ brew 'readline' # Readline library provides a set of functions for use by applic
 # brew 'spaceman-diff' # diff images from the command line
 # brew 'spark' # sparklines for your shell (draw bars with input numbers)
 brew 'unrar'
-brew 'wget'
+# brew 'wget'
 # brew 'yarn'
 brew 'fd'
 brew 'bat'
-brew 'xsv'
+# brew 'xsv'
 # brew 'youtube-dl'
 
 # tvhung83 packages
@@ -81,7 +81,7 @@ cask 'qlvideo'
 # cask 'pandoc'
 
 # tvhung83 apps
-cask spectacle
+cask 'spectacle'
 # cask 'java'
 cask 'iterm2'
 cask 'sublime-text'
@@ -107,6 +107,5 @@ cask 'appcleaner'
 cask 'intellij-idea-ce'
 # cask 'microsoft-office'
 cask 'kap'
-# cask 'sblack'
-# cask 'istat-menus'
 cask 'iina'
+cast 'intel-power-gadget'
