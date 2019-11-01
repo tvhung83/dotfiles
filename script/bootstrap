@@ -130,8 +130,8 @@ clone_mandatory_repos () {
   # mkdir -p $HOME/.zsh $HOME/.tmux/plugins
   # git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
   git clone --recursive https://github.com/Eriner/zim.git ${ZDOTDIR:-${HOME}}/.zim
-  git clone https://github.com/tvhung83/fzf-marks $HOME/.zim/modules/fzf-marks
-  git clone https://github.com/tvhung83/zsh-interactive-cd.git $HOME/.zim/modules/icd
+  git clone https://github.com/urbainvaes/fzf-marks.git $HOME/.zim/modules/fzf-marks
+  git clone https://github.com/changyuheng/zsh-interactive-cd.git $HOME/.zim/modules/interactive-cd
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   # nvm install
@@ -148,11 +148,16 @@ install_dotfiles () {
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+
+  # link hammerspoon & karabiner configs
+  mkdir -p $HOME/.hammerspoon $HOME/.config/karabiner
+  link_file "$DOTFILES_ROOT/hammerspoon/init.lua" "$HOME/.hammerspoon/init.lua"
+  link_file "$DOTFILES_ROOT/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
 }
 
-# setup_gitconfig
-# clone_mandatory_repos
-# install_dotfiles
+setup_gitconfig
+clone_mandatory_repos
+install_dotfiles
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]

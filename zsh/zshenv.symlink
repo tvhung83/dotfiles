@@ -1,4 +1,4 @@
-#export CLICOLOR=1
+export CLICOLOR=1
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -14,23 +14,43 @@ export PLAYGROUND=~/playground
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
+# System
+export PATH="./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
+
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=24"
+# export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
+#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+
+# jenv
+# if (( $+commands[jenv] ))
+# then
+  # eval "$(jenv init -)"
+# fi
+
+# rbenv
+# init according to man page
+# if (( $+commands[rbenv] ))
+# then
+  # eval "$(rbenv init -)"
+# fi
+
+# pyenv
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+# Yarn
+# if (( $+commands[yarn] ))
+# then
+#   export PATH="$PATH:`yarn global bin`"
+# fi
+
 # Flutter
 # export FLUTTER_ROOT=$PLAYGROUND/flutter
 
 # Golang
 export GOPATH=~/workspace/go
-
-# System
-export PATH="./bin:$HOME/.embulk/bin:$HOME/workspace/datatank-tools/bin:$HOME/workspace/chef-repo/scripts:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$GOPATH/bin:/usr/local/opt/mysql@5.7/bin:$HOME/playground/flutter/bin:/usr/local/opt/qt@5.5/bin:/usr/local/opt/qt/bin:$PATH"
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
-export EDITOR='nvim'
-export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
-export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
-export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
-
-# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=24"
-# export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+export GOROOT="$(brew --prefix golang)/libexec"
 
 # JRuby
 # export JRUBY_OPTS="--debug --dev"
@@ -40,7 +60,10 @@ export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 # export RBENV_VERSION="2.6.2"
 
 # nvm
-# export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.nvm"
+# alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Java
 # export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
@@ -54,23 +77,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 # GPG signing
 export GPG_TTY=$(tty)
 
-alias urldecode='python -c "import sys, urllib as ul; \
-    print ul.unquote_plus(sys.argv[1])"'
-
-alias urlencode='python -c "import sys, urllib as ul; \
-    print ul.quote_plus(sys.argv[1])"'
-
-alias gh="open https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)"
-alias byte="gnumfmt --to=iec-i --suffix=B --padding=7"
-alias h='function hdi(){ howdoi $* -c -n 3; }; hdi'
-alias ops='datatank-ops'
-
-genpass() {
-  pwgen -Bs $1 1 | pbcopy | pbpaste; echo "Has been copied to clipboard"
-}
-
-swap()         
-{
-  local TMPFILE=tmp.$$
-  mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
-}
+# System 2nd
+export PATH="$PATH:$GOPATH/bin:${GOROOT}/bin:$HOME/playground/flutter/bin"
+export EDITOR='nvim'
+# export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+# export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"

@@ -49,27 +49,47 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
+
+# shell
 alias reload!='. $HOME/.zshrc $HOME/.zshenv'
 alias vi=$EDITOR
 alias ev='$EDITOR $HOME/.vimrc'
-alias et='$EDITOR $HOME/.tmux.conf'
+# alias et='$EDITOR $HOME/.tmux.conf'
 alias ez='$EDITOR $HOME/.zshrc'
-alias sz='source $HOME/.zshrc'
+# alias sz='source $HOME/.zshrc'
+
+# system
+alias top="sudo htop"
+alias help='tldr'
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias ping='prettyping --nolegend'
+alias cat='bat'
+
+# utility
 alias dl='diskutil list'
 alias um='diskutil unmount'
-alias efi='diskutil mount /dev/disk0s1'
-alias efi1='diskutil mount /dev/disk1s1'
-alias efi2='diskutil mount /dev/disk2s1'
-# alias ff='find . -type f -name'
-# alias fd='find . -type d -name'
+alias efi='sudo diskutil mount /dev/disk0s1'
+alias efi1='sudo diskutil mount /dev/disk1s1'
+alias efi2='sudo diskutil mount /dev/disk2s1'
 alias j2y='pbpaste | json2yaml | pbcopy'
 alias y2j='pbpaste | yaml2json | pbcopy'
-alias mysql='mysql --pager="grcat ~/.mysql.grc | less -RSFX" "$@"'
+# alias mysql='mysql --pager="grcat ~/.mysql.grc | less -RSFX" "$@"'
 alias em='emacsclient'
 alias bi='bundle install'
-alias br='bundle exec rails s'
-alias biem='bundle install --gemfile embulk-gemfile'
 alias py='python'
+alias view="fzf --preview 'bat --color \"always\" {}'"
+
+# extra
+alias tun='ssh udoo -L 3306:localhost:3306 -f sleep 60'
+
+alias urldecode='python -c "import sys, urllib as ul; \
+    print ul.unquote_plus(sys.argv[1])"'
+
+alias urlencode='python -c "import sys, urllib as ul; \
+    print ul.quote_plus(sys.argv[1])"'
+
+alias byte="gnumfmt --to=iec-i --suffix=B --padding=7"
+alias h='function hdi(){ howdoi $* -c -n 3; }; hdi'
 
 # git
 # Use `hub` as our git wrapper:
@@ -96,36 +116,13 @@ alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 #alias gac='git add -A && git commit -m'
 
-# rbenv
-# init according to man page
-# if (( $+commands[rbenv] ))
-# then
-#   eval "$(rbenv init -)"
-# fi
-
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
-
-# nvm
-# export NVM_DIR="$HOME/.nvm"
-# alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Yarn
-# if (( $+commands[yarn] ))
-# then
-#   export PATH="$PATH:`yarn global bin`"
-# fi
-
 # Docker
-# alias d='docker $*'
-# alias d-c='docker-compose $*'
+alias d='docker $*'
+alias dnc='docker-compose $*'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zim/modules/icd/init.zsh ] && source ~/.zim/modules/icd/init.zsh
-[ -f ~/.zim/modules/fzf-marks/init.zsh ] && source ~/.zim/modules/fzf-marks/init.zsh
+[ -f ~/.zim/modules/interactive-cd/zsh-interactive-cd.plugin.zsh ] && source ~/.zim/modules/interactive-cd/zsh-interactive-cd.plugin.zsh
+[ -f ~/.zim/modules/fzf-marks/fzf-marks.plugin.zsh ] && source ~/.zim/modules/fzf-marks/fzf-marks.plugin.zsh
 
 # fzf customizations
 # Use ~~ as the trigger sequence instead of the default **
@@ -136,13 +133,29 @@ export FZF_COMPLETION_TRIGGER='~~'
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # To apply the command to CTRL-T as well
+export FZF_CTRL_T_OPTS="--preview 'bat --color \"always\" {}' --no-height"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 
 # The next line updates PATH for the Google Cloud SDK.
 # if [ -f '/Users/robert/playground/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 # if [ -f '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/robert/playground/google-cloud-sdk/completion.zsh.inc'; fi
+
+genpass() {
+  pwgen -Bs $1 1 | pbcopy | pbpaste; echo "Has been copied to clipboard"
+}
+
+swap()         
+{
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
+}
+
+fortune | ponysay

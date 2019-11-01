@@ -3,3 +3,12 @@ innodb_strict_mode = 1
 innodb_large_prefix = 1
 innodb_file_per_table = 1
 innodb_file_format = Barracuda
+
+[client]
+user = root
+password = root
+host = localhost
+database = integrationtest
+port = 3306
+
+pager = grcat ~/.mysql.grc

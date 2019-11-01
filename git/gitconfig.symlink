@@ -36,6 +36,9 @@
         prompt = false
 [diff]
         tool = Kaleidoscope
+[pager]
+       diff = diff-so-fancy | less --tabs=1,5 -RFX
+       show = diff-so-fancy | less --tabs=1,5 -RFX
 [help]
         autocorrect = 1
 [push]
@@ -49,3 +52,5 @@
 	oauth-token = 401851
 [user]
 	signingkey = 9795E50B9F08A0FE
+; [difftool "ksdiff"]
+	; cmd = ksdiff \"$LOCAL\" \"$REMOTE\"
