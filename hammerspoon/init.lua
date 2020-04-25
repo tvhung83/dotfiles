@@ -9,7 +9,7 @@ HYPER = {'ctrl', 'shift', 'alt', 'cmd'}
 function setUpAppBindings()
   -- hyperFocusAll('w', 'React Native Debugger', 'Simulator', 'qemu-system-x86_64')
   hyperFocusOrOpen('e', 'Notes')
-  hyperFocusOrOpen('i', 'IntelliJ IDEA', 'IntelliJ IDEA-EAP')
+  hyperFocusOrOpen('i', 'IntelliJ IDEA')
   hyperFocusOrOpen('f', 'Finder')
   hyperFocusOrOpen('c', 'Visual Studio Code')
   hyperFocusOrOpen('m', 'Mail')

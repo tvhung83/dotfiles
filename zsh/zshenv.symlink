@@ -14,12 +14,7 @@ export PLAYGROUND=~/playground
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
-# System
-export PATH="./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
-
-# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=24"
-# export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1252431"
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+export PATH="/usr/local/bin:./bin:$HOME/bin:$ZSH/bin:$HOME/.fzf/bin:$HOME/.gem/ruby/2.6.0/bin:/usr/local/sbin:$PATH"
 
 # jenv
 # if (( $+commands[jenv] ))
@@ -36,8 +31,11 @@ export PATH="./bin:/usr/local/bin:/usr/local/sbin:$ZSH/bin:$PATH"
 
 # pyenv
 # if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
+  # eval "$(pyenv init -)"
 # fi
+
+# pipenv completion
+# eval "$(pipenv --completion)"
 
 # Yarn
 # if (( $+commands[yarn] ))
@@ -62,12 +60,11 @@ export GOROOT="$(brew --prefix golang)/libexec"
 # nvm
 export NVM_DIR="$HOME/.nvm"
 # alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Java
-# export JAVA_HOME=$(/usr/libexec/java_home -v1.7)
-# export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 # export RAILS_ENV="development"
 # export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
@@ -77,9 +74,10 @@ export NVM_DIR="$HOME/.nvm"
 # GPG signing
 export GPG_TTY=$(tty)
 
-# System 2nd
-export PATH="$PATH:$GOPATH/bin:${GOROOT}/bin:$HOME/playground/flutter/bin"
+export PATH="$GOPATH/bin:${GOROOT}/bin:$HOME/.cargo/bin:$HOME/playground/flutter/bin:$PATH"
+
 export EDITOR='nvim'
 # export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
 # export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
 # export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
+export GRADLE_USER_HOME=$HOME/.gradle

@@ -6,6 +6,7 @@ tap 'caskroom/versions'
 # tap 'd12frosted/emacs-plus'
 tap 'neovim/neovim'
 # tap 'rogual/neovim-dot-app'
+tap 'wakeful/selection'
 
 # brew 'ack' # grep for programmers
 brew 'zsh'
@@ -68,6 +69,7 @@ brew 'fortune'
 brew 'openvpn'
 brew 'expect'
 brew 'gnupg'
+brew 'yaml2json'
 
 # cask '1password'
 # cask 'adium' # Adium is a free instant messaging application

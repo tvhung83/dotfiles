@@ -54,3 +54,5 @@
 	signingkey = 9795E50B9F08A0FE
 ; [difftool "ksdiff"]
 	; cmd = ksdiff \"$LOCAL\" \"$REMOTE\"
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/

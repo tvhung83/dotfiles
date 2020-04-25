@@ -71,6 +71,7 @@ alias um='diskutil unmount'
 alias efi='sudo diskutil mount /dev/disk0s1'
 alias efi1='sudo diskutil mount /dev/disk1s1'
 alias efi2='sudo diskutil mount /dev/disk2s1'
+alias efi3='sudo diskutil mount /dev/disk3s1'
 alias j2y='pbpaste | json2yaml | pbcopy'
 alias y2j='pbpaste | yaml2json | pbcopy'
 # alias mysql='mysql --pager="grcat ~/.mysql.grc | less -RSFX" "$@"'
@@ -158,4 +159,4 @@ swap()
   mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE $2
 }
 
-fortune | ponysay
+# fortune | ponysay
