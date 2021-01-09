@@ -13,3 +13,7 @@ database = ebdb
 port = 3306
 
 pager = grcat ~/.mysql.grc
+
+[mysqld]
+sql_mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+default-time-zone='+00:00'

@@ -5,6 +5,7 @@ set nocompatible
 filetype off
 
 set termguicolors
+set cursorline
 
 " Turn on syntax highlighting
 syntax enable

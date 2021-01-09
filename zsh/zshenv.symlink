@@ -1,3 +1,12 @@
+# Start configuration added by Zim install {{{
+#
+# User configuration sourced by all invocations of the shell
+#
+
+# Define Zim location
+: ${ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim}
+# }}} End configuration added by Zim install
+
 export CLICOLOR=1
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
@@ -14,7 +23,8 @@ export PLAYGROUND=~/playground
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
-export PATH="/usr/local/bin:./bin:$HOME/bin:$ZSH/bin:$HOME/.fzf/bin:$HOME/.gem/ruby/2.6.0/bin:/usr/local/sbin:$PATH"
+
+export PATH="/usr/local/bin:./bin:$HOME/bin:$ZSH/bin:$HOME/.fzf/bin:/usr/local/sbin:$GOPATH/bin:${GOROOT}/bin:$HOME/.cargo/bin:$HOME/playground/flutter/bin:$HOME/.gem/ruby/2.6.0/bin:$PATH"
 
 # jenv
 # if (( $+commands[jenv] ))
@@ -47,8 +57,9 @@ export PATH="/usr/local/bin:./bin:$HOME/bin:$ZSH/bin:$HOME/.fzf/bin:$HOME/.gem/r
 # export FLUTTER_ROOT=$PLAYGROUND/flutter
 
 # Golang
-export GOPATH=~/workspace/go
-export GOROOT="$(brew --prefix golang)/libexec"
+export GOPATH=$HOME/workspace/go
+# export GOROOT="$(brew --prefix golang)/libexec"
+export GOROOT="/usr/local/opt/go/libexec"
 
 # JRuby
 # export JRUBY_OPTS="--debug --dev"
@@ -58,13 +69,13 @@ export GOROOT="$(brew --prefix golang)/libexec"
 # export RBENV_VERSION="2.6.2"
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="$HOME/.nvm"
 # alias nv='. "$NVM_DIR/nvm.sh" --no-use' # This loads nvm
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Java
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+# export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 # export RAILS_ENV="development"
 # export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
@@ -74,10 +85,14 @@ export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 # GPG signing
 export GPG_TTY=$(tty)
 
-export PATH="$GOPATH/bin:${GOROOT}/bin:$HOME/.cargo/bin:$HOME/playground/flutter/bin:$PATH"
-
 export EDITOR='nvim'
 # export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
 # export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
 # export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
 export GRADLE_USER_HOME=$HOME/.gradle
+
+# export SSLKEYLOGFILE=~/.ssl-key.log
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+export PATH="/usr/local/opt/php@5.6/bin:$PYENV_ROOT/bin:$HOME/Library/Python/3.8/bin:$PATH"
